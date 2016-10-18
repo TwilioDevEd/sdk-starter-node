@@ -1,6 +1,6 @@
 # Twilio SDK Starter Application for Node.js
 
-This sample application contains basic examples of how to use Twilio APIs in a Node.js web 
+This sample project demonstrates how to use Twilio APIs in a Node.js web 
 application. Once the app is up and running, check out [the home page](http://localhost:3000)
 to see which demos you can run. You'll find examples for [IP Messaging](https://www.twilio.com/ip-messaging), 
 [Video](https://www.twilio.com/video), [Sync](https://www.twilio.com/sync), and more.
