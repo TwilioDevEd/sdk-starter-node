@@ -69,45 +69,9 @@ node .
 
 Your application should now be running at [http://localhost:3000/](http://localhost:3000/). 
 
+[Home Screen](https://cloud.githubusercontent.com/assets/809856/19492296/b1f0fd88-953b-11e6-8a46-37cb6b5f9bcc.png)
 
-### Video
-
-Check out your video application at [http://localhost:3000/video](http://localhost:3000/video). 
-
-Just enter
-the name of the room you want to join and click on 'Join Room'. Then,
-open another tab and join the same room. Now, you should see your own
-video in both the tabs!
-
-![screenshot of video app](https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/video2.original.png)
-
-### IP Messaging
-
-Your chat application should now be running at [http://localhost:3000/ipmessaging](http://localhost:3000/ipmessaging). Open this page
-in a couple browsers or tabs, and start chatting!
-
-![screenshot of chat app](https://s3.amazonaws.com/howtodocs/quickstart/ipm-browser-quickstart.png)
-
-
-### Notify
-
-When your app receives a 'registration' in the form of a POST request to the /register endpoint from a mobile client (for instance, http://localhost:3000/register), it will create a binding. A binding is the address Twilio gives your app installation. It lets our service know where to send notifications.  
-
-To send a notification to the client run the notify script 
-
-```bash
-  node notify_send_notification IDENTITY_HERE
-```
-
-The mobile client will receive a notification with the hardcoded 'Hello {IDENTITY}' message.
-
-That is it! Check out our REST API [docs](http://www.local.twilio.com/docs/api/notifications/rest/overview) for more information on Twilio Notifications.
-
-### Sync
-
-Your browser-based sync application should now be running at [http://localhost:3000/sync](http://localhost:3000/sync). Open this page
-in a couple of browsers or tabs, and start syncing!
-
+Check your config values, and follow the links to the demo applications!
 
 ## License
 MIT
