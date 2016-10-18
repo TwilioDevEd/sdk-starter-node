@@ -12,37 +12,20 @@ Note: For Notify, you will need credentials for either (or both) of Apple or Goo
 
 | Config Value  | Description |
 | :-------------  |:------------- |
-Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
-API Key | Used to authenticate - [generate one here](https://www.twilio.com/console/video/dev-tools/api-keys).
-API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/video/dev-tools/api-keys).
+TWILIO_ACCOUNT_SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
+TWILIO_API_KEY | Used to authenticate - [generate one here](https://www.twilio.com/console/video/dev-tools/api-keys).
+TWILIO_API_SECRET | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/video/dev-tools/api-keys).
 
-### Video
+### Optional Settings
 
-| Config Value  | Description |
-| :-------------  |:------------- |
-Configuration Profile SID | Identifier for a set of config properties for your video application - [find yours here](https://www.twilio.com/console/video/profiles).
-
-### IP Messaging
-
-| Config Value  | Description |
-| :-------------  |:------------- |
-Service Instance SID | Like a database for your IP Messaging data - [generate one in the console here](https://www.twilio.com/console/ip-messaging/services)
-
-
-### Notify
-
-| Config Value  | Description |
-| :-------------  |:------------- |
-APN Credential SID | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
-GCM Credential SID | Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that. (Optional)
-Notification_Service SID | You will need to create a Notify service - [generate one here](https://www.twilio.com/console/notify/services)
-
-
-### Sync
-
-| Config Value  | Description |
-| :-------------  |:------------- |
-Sync Service Instance SID | Like a database for your Sync data - generate one with the curl command below.
+| Product  | Config Value  | Description |
+| :-------------  |:------------- |:------------- |
+Video | TWILIO_CONFIGURATION_SID | Identifier for a set of config properties for your video application - [find yours here](https://www.twilio.com/console/video/profiles).
+IP Messaging | TWILIO_IPM_SERVICE_SID | Like a database for your IP Messaging data - [generate one in the console here](https://www.twilio.com/console/ip-messaging/services)
+Notify | TWILIO_APN_CREDENTIAL_SID | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
+Notify | TWILIO_GCM_CREDENTIAL_SID | Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that. (Optional)
+Notify | TWILIO_NOTIFICATION_SERVICE_SID | You will need to create a Notify service - [generate one here](https://www.twilio.com/console/notify/services).
+Sync | TWILIO_SYNC_SERVICE_SID | Like a database for your Sync data - generate one with the curl command below.
 
 #### Temporary: Generating a Sync Service Instance
 
