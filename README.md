@@ -35,7 +35,7 @@ Service Instance SID | Like a database for your IP Messaging data - [generate on
 | :-------------  |:------------- |
 APN Credential SID | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
 GCM Credential SID | Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that. (Optional)
-Notification_Service SID | Use the `notify_create_service.js` script to generate this. Just run `node notify_create_service.js` in your terminal, after you add the above configuration values to the `.env` file.
+Notification_Service SID | You will need to create a Notify service - [generate one here](https://www.twilio.com/console/notify/services)
 
 
 ### Sync
