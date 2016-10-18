@@ -1,4 +1,4 @@
-# Twilio Starter Server Application for Node.js
+# Twilio SDK Starter Application for Node.js
 
 This sample application contains basic examples of how to use Twilio APIs in a Node.js web 
 application. Once the app is up and running, check out [the home page](http://localhost:3000)
