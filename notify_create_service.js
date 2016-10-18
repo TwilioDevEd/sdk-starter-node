@@ -2,7 +2,7 @@ require('dotenv').load();;
 var twilio = require('twilio');
 
 // Authenticate with Twilio
-var client = new twilio(process.env.TWILIO_ACCOUNT_SID,  process.env.TWILIO_AUTH_TOKEN);
+var client = new twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECRET, null, {accountSid:process.env.TWILIO_ACCOUNT_SID});
 
 // Create a user notification service instance
 var serviceData = {

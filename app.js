@@ -40,7 +40,6 @@ app.use(bodyParser.json());
 app.get('/', function(request, response) {
   response.render('index.pug', {
     TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
-    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
     TWILIO_NOTIFICATION_SERVICE_SID: process.env.TWILIO_NOTIFICATION_SERVICE_SID,
     TWILIO_APN_CREDENTIAL_SID: process.env.TWILIO_APN_CREDENTIAL_SID,
     TWILIO_GCM_CREDENTIAL_SID: process.env.TWILIO_GCM_CREDENTIAL_SID,
@@ -116,7 +115,7 @@ app.get('/token', function(request, response) {
 app.post('/register', function(request, response) {
   
   // Authenticate with Twilio
-  var client = new Twilio(process.env.TWILIO_ACCOUNT_SID,  process.env.TWILIO_AUTH_TOKEN);
+var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECRET, null, {accountSid:process.env.TWILIO_ACCOUNT_SID});
   
   // Get a reference to the user notification service instance
   var service = client.notify.v1.services(process.env.TWILIO_NOTIFICATION_SERVICE_SID);

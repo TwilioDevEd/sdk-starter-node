@@ -2,36 +2,37 @@
 
 This server starter application gives you a quickstart for several Twilio products, 
 including Video, Notify, IP Messaging, and Sync. You can get one or more of them up and running by
-gathering the appropriate configuration values, and adding them to the configuration file.
+gathering the appropriate configuration values, and adding them to the configuration file. You will need your Account SID, API Key, and API Secret for all of the products, and then specific configuration values for each of the products that you want to use.
 
 After that, you'll be ready to start building your own projects on top of this starter solution!
 
 Note: For Notify, you will need credentials for either (or both) of Apple or Google's push notification services.
+
+### Account Information
+
+| Config Value  | Description |
+| :-------------  |:------------- |
+Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
+API Key | Used to authenticate - [generate one here](https://www.twilio.com/console/video/dev-tools/api-keys).
+API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/video/dev-tools/api-keys).
 
 ### Video
 
 | Config Value  | Description |
 | :-------------  |:------------- |
 Configuration Profile SID | Identifier for a set of config properties for your video application - [find yours here](https://www.twilio.com/console/video/profiles).
-Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
-API Key | Used to authenticate - [generate one here](https://www.twilio.com/console/video/dev-tools/api-keys).
-API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/video/dev-tools/api-keys).
 
 ### IP Messaging
 
 | Config Value  | Description |
 | :-------------  |:------------- |
 Service Instance SID | Like a database for your IP Messaging data - [generate one in the console here](https://www.twilio.com/console/ip-messaging/services)
-Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
-API Key | Used to authenticate - [generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
-API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
 
 
 ### Notify
 
 | Config Value  | Description |
 | :-------------  |:------------- |
-Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
 APN Credential SID | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
 GCM Credential SID | Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that. (Optional)
 Notification_Service SID | Use the notify_create_service.js script to generate this. Just run `node notify_create_service.js` in your terminal, after you add the above configuration values to the `.env` file.
@@ -41,10 +42,7 @@ Notification_Service SID | Use the notify_create_service.js script to generate t
 
 | Config Value  | Description |
 | :-------------  |:------------- |
-Service Instance SID | Like a database for your Sync data - generate one with the curl command below.
-Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
-API Key | Used to authenticate - [Use the IP Messaging dev tools to generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
-API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
+Sync Service Instance SID | Like a database for your Sync data - generate one with the curl command below.
 
 #### Temporary: Generating a Sync Service Instance
 
