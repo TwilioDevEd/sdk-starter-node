@@ -34,7 +34,7 @@ Credential | Description
 Twilio Account SID | Your main Twilio account identifier - [find it on your dashboard](https://www.twilio.com/user/account/settings).
 Twilio APN Credential SID | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/user/account/ip-messaging/credentials). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
 Twilio GCM Credential SID | Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/user/account/ip-messaging/credentials). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that. (Optional)
-Twilio Notification_Service SID | Use the notify)create_service.js script to generate this. Just run 'node notify_create_service.js' in your terminal, after you add the above configuration values to the `.env` file.
+Twilio Notification_Service SID | Use the notify_create_service.js script to generate this. Just run `node notify_create_service.js` in your terminal, after you add the above configuration values to the `.env` file.
 
 
 ### Sync
@@ -46,7 +46,7 @@ Account SID | Your primary Twilio account identifier - find this [in the console
 API Key | Used to authenticate - [Use the IP Messaging dev tools to generate one here](https://www.twilio.com/user/account/ip-messaging/dev-tools/api-keys).
 API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/user/account/ip-messaging/dev-tools/api-keys).
 
-#### Temporary: Generating a Service Instance
+#### Temporary: Generating a Sync Service Instance
 
 During the Sync developer preview, you will need to generate Sync service
 instances via API until the Console GUI is available. Using the API key pair you
@@ -56,7 +56,7 @@ generated above, generate a service instance via REST API with this curl command
 curl -X POST https://preview.twilio.com/Sync/Services \
  -d 'FriendlyName=MySyncServiceInstance' \
  -u 'SKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:your_api_secret'
-
+```
 
 ## A Note on API Keys
 
@@ -102,7 +102,7 @@ video in both the tabs!
 
 ### IP Messaging
 
-Your chat application should now be running at http://localhost:3000/ipmessaging. Open this page
+Your chat application should now be running at [http://localhost:3000/ipmessaging](http://localhost:3000/ipmessaging). Open this page
 in a couple browsers or tabs, and start chatting!
 
 ![screenshot of chat app](https://s3.amazonaws.com/howtodocs/quickstart/ipm-browser-quickstart.png)
@@ -124,7 +124,7 @@ That is it! Check out our REST API [docs](http://www.local.twilio.com/docs/api/n
 
 ### Sync
 
-Your browser-based sync application should now be running at http://localhost:3000/sync. Open this page
+Your browser-based sync application should now be running at [http://localhost:3000/sync](http://localhost:3000/sync). Open this page
 in a couple of browsers or tabs, and start syncing!
 
 
