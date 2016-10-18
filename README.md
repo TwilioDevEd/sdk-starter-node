@@ -60,9 +60,9 @@ curl -X POST https://preview.twilio.com/Sync/Services \
  -u 'SKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:your_api_secret'
 ```
 
-## Setting Up The Node.js Application
+## Running the sample application
 
-Now that are application is configured, we need to install our dependencies from npm.
+Now that the application is configured, we need to install our dependencies from npm.
 
 ```bash
 npm install
