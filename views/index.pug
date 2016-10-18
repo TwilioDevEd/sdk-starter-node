@@ -1,0 +1,168 @@
+doctype html
+html
+  head
+    title Twilio Server Starter Kit for Node
+    style.
+      * { font-family: Helvetica; }
+      table { border-collapse:collapse; }
+      th {
+        margin:0;
+        border: 1px solid #ccc;
+        background-color: #eee;
+        text-align:left;
+        padding:5px;
+      }
+      td {
+        margin:0;
+        border: 1px solid #ccc;
+        padding:5px;
+      }
+      .unset { color: red; font-weight: bold; }
+      .good { color: green; font-weight: bold; }
+  body
+    h1 Twilio Server Starter Kit for Node Environment Setup
+
+    h2 Video
+
+    a(href='/video') Video Web Demo
+
+    p The following system environment variables should be set:
+    table
+      
+      tr
+        th TWILIO_CONFIGURATION_SID
+        if TWILIO_CONFIGURATION_SID
+          td.good= TWILIO_CONFIGURATION_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_ACCOUNT_SID
+        if TWILIO_ACCOUNT_SID
+          td.good= TWILIO_ACCOUNT_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_API_KEY
+        if TWILIO_API_KEY
+          td.good= TWILIO_API_KEY
+        else
+          td.unset Not Configured
+
+      tr
+        th TWILIO_API_SECRET
+        if TWILIO_API_SECRET
+          td.good API Secret configured
+        else
+          td.unset Not Configured
+
+    h2 Notify
+
+    p The following system environment variables should be set:
+    table
+      
+      tr
+        th TWILIO_NOTIFICATION_SERVICE_SID
+        if TWILIO_NOTIFICATION_SERVICE_SID
+          td.good= TWILIO_NOTIFICATION_SERVICE_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_APN_CREDENTIAL_SID
+        if TWILIO_APN_CREDENTIAL_SID
+          td.good= TWILIO_APN_CREDENTIAL_SID
+        else
+          td.unset Not Configured
+                
+      tr
+        th TWILIO_GCM_CREDENTIAL_SID
+        if TWILIO_GCM_CREDENTIAL_SID
+          td.good= TWILIO_GCM_CREDENTIAL_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_ACCOUNT_SID
+        if TWILIO_ACCOUNT_SID
+          td.good= TWILIO_ACCOUNT_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_AUTH_TOKEN
+        if TWILIO_AUTH_TOKEN
+          td.good Secret token configured
+        else
+          td.unset Not Configured
+
+    h2 IP Messaging
+
+    a(href='/ipmessaging') IP Messaging Web Demo
+
+    p The following system environment variables should be set:
+    table
+      
+      tr
+        th TWILIO_IPM_SERVICE_SID
+        if TWILIO_IPM_SERVICE_SID
+          td.good= TWILIO_IPM_SERVICE_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_ACCOUNT_SID
+        if TWILIO_ACCOUNT_SID
+          td.good= TWILIO_ACCOUNT_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_API_KEY
+        if TWILIO_API_KEY
+          td.good= TWILIO_API_KEY
+        else
+          td.unset Not Configured
+
+      tr
+        th TWILIO_API_SECRET
+        if TWILIO_API_SECRET
+          td.good API Secret configured
+        else
+          td.unset Not Configured
+
+    h2 Sync
+
+    a(href='/sync') Sync Web Demo
+    
+    p The following system environment variables should be set:
+    table
+      
+      tr
+        th TWILIO_SYNC_SERVICE_SID
+        if TWILIO_SYNC_SERVICE_SID
+          td.good= TWILIO_SYNC_SERVICE_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_ACCOUNT_SID
+        if TWILIO_ACCOUNT_SID
+          td.good= TWILIO_ACCOUNT_SID
+        else
+          td.unset Not Configured
+      
+      tr
+        th TWILIO_API_KEY
+        if TWILIO_API_KEY
+          td.good= TWILIO_API_KEY
+        else
+          td.unset Not Configured
+
+      tr
+        th TWILIO_API_SECRET
+        if TWILIO_API_SECRET
+          td.good API Secret configured
+        else
+          td.unset Not Configured
