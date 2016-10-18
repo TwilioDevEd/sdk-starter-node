@@ -1,31 +1,52 @@
 # Twilio Starter Server Application for Node.js
 
-This server starter application gives you a quickstart for several Twilio products, 
-including Video, Notify, IP Messaging, and Sync. You can get one or more of them up and running by
-gathering the appropriate configuration values, and adding them to the configuration file. You will need your Account SID, API Key, and API Secret for all of the products, and then specific configuration values for each of the products that you want to use.
+This sample application contains basic examples of how to use Twilio APIs in a Node.js web 
+application. Once the app is up and running, check out [the home page](http://localhost:3000)
+to see which demos you can run. You'll find examples for [IP Messaging](https://www.twilio.com/ip-messaging), 
+[Video](https://www.twilio.com/video), [Sync](https://www.twilio.com/sync), and more.
 
-After that, you'll be ready to start building your own projects on top of this starter solution!
+Let's get started!
 
-Note: For Notify, you will need credentials for either (or both) of Apple or Google's push notification services.
+## Configure the sample application
 
-### Account Information
+To run the application, you'll need to gather your Twilio account credentials and configure them
+in a file named `.env`. To create this file from an example template, do the following in your
+Terminal.
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` in your favorite text editor and configure the following values.
+
+### Configure account information
+
+Every sample in the demo requires some basic credentials from your Twilio account. Configure these first.
 
 | Config Value  | Description |
 | :-------------  |:------------- |
-TWILIO_ACCOUNT_SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
-TWILIO_API_KEY | Used to authenticate - [generate one here](https://www.twilio.com/console/video/dev-tools/api-keys).
-TWILIO_API_SECRET | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/video/dev-tools/api-keys).
+`TWILIO_ACCOUNT_SID` | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
+`TWILIO_API_KEY` | Used to authenticate - [generate one here](https://www.twilio.com/console/video/dev-tools/api-keys).
+`TWILIO_API_SECRET` | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/video/dev-tools/api-keys).
 
-### Optional Settings
+#### A Note on API Keys
 
-| Product  | Config Value  | Description |
+When you generate an API key pair at the URLs above, your API Secret will only be shown once - 
+make sure to save this information in a secure location, or possibly your `~/.bash_profile`.
+
+### Configure product-specific settings
+
+Depending on which demos you'd like to run, you'll need to configure a few more values in your 
+`.env` file.
+
+| Config Value  | Product Demo | Description |
 | :-------------  |:------------- |:------------- |
-Video | TWILIO_CONFIGURATION_SID | Identifier for a set of config properties for your video application - [find yours here](https://www.twilio.com/console/video/profiles).
-IP Messaging | TWILIO_IPM_SERVICE_SID | Like a database for your IP Messaging data - [generate one in the console here](https://www.twilio.com/console/ip-messaging/services)
-Notify | TWILIO_APN_CREDENTIAL_SID | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
-Notify | TWILIO_GCM_CREDENTIAL_SID | Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that. (Optional)
-Notify | TWILIO_NOTIFICATION_SERVICE_SID | You will need to create a Notify service - [generate one here](https://www.twilio.com/console/notify/services).
-Sync | TWILIO_SYNC_SERVICE_SID | Like a database for your Sync data - generate one with the curl command below.
+`TWILIO_IPM_SERVICE_SID` | IP Messaging | Like a database for your IP Messaging data - [generate one in the console here](https://www.twilio.com/console/ip-messaging/services)
+`TWILIO_CONFIGURATION_SID` | Video | Identifier for a set of config properties for your video application - [find yours here](https://www.twilio.com/console/video/profiles)
+`TWILIO_SYNC_SERVICE_SID` | Sync (Preview) | Like a database for your Sync data - generate one with the curl command below.
+`TWILIO_NOTIFICATION_SERVICE_SID` | Notify (Preview) | You will need to create a Notify service - [generate one here](https://www.twilio.com/console/notify/services)
+`TWILIO_APN_CREDENTIAL_SID` | Notify (Preview) | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
+`TWILIO_GCM_CREDENTIAL_SID`  | Notify (Preview) |Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/console/notify/credentials). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that (Optional)
 
 #### Temporary: Generating a Sync Service Instance
 
@@ -39,23 +60,9 @@ curl -X POST https://preview.twilio.com/Sync/Services \
  -u 'SKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:your_api_secret'
 ```
 
-## A Note on API Keys
-
-When you generate an API key pair at the URLs above, your API Secret will only
-be shown once - make sure to save this in a secure location, 
-or possibly your `~/.bash_profile`.
-
 ## Setting Up The Node.js Application
 
-Create a configuration file for your application:
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` with the configuration parameters we gathered from above.
-
-Next, we need to install our dependencies from npm:
+Now that are application is configured, we need to install our dependencies from npm.
 
 ```bash
 npm install
