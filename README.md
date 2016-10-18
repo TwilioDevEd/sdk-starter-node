@@ -22,19 +22,19 @@ API Secret | Used to authenticate - [just like the above, you'll get one here](h
 | Config Value  | Description |
 | :-------------  |:------------- |
 Service Instance SID | Like a database for your IP Messaging data - [generate one in the console here](https://www.twilio.com/console/ip-messaging/services)
-Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console/ip-messaging/getting-started).
+Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
 API Key | Used to authenticate - [generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
 API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
 
 
 ### Notify
 
-Credential | Description
----------- | -----------
-Twilio Account SID | Your main Twilio account identifier - [find it on your dashboard](https://www.twilio.com/user/account/settings).
-Twilio APN Credential SID | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/user/account/ip-messaging/credentials). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
-Twilio GCM Credential SID | Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/user/account/ip-messaging/credentials). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that. (Optional)
-Twilio Notification_Service SID | Use the notify_create_service.js script to generate this. Just run `node notify_create_service.js` in your terminal, after you add the above configuration values to the `.env` file.
+| Config Value  | Description |
+| :-------------  |:------------- |
+Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
+APN Credential SID | Adds iOS notification ability to your app - [generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys). You'll need to provision your APN push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios) guide on how to do that. (Optional)
+GCM Credential SID | Adds Android/GCM notification ability to your app - [generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys). You'll need to provision your GCM push credentials to generate this. See [this](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-android) guide on how to do that. (Optional)
+Notification_Service SID | Use the notify_create_service.js script to generate this. Just run `node notify_create_service.js` in your terminal, after you add the above configuration values to the `.env` file.
 
 
 ### Sync
@@ -43,8 +43,8 @@ Twilio Notification_Service SID | Use the notify_create_service.js script to gen
 | :-------------  |:------------- |
 Service Instance SID | Like a database for your Sync data - generate one with the curl command below.
 Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
-API Key | Used to authenticate - [Use the IP Messaging dev tools to generate one here](https://www.twilio.com/user/account/ip-messaging/dev-tools/api-keys).
-API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/user/account/ip-messaging/dev-tools/api-keys).
+API Key | Used to authenticate - [Use the IP Messaging dev tools to generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
+API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
 
 #### Temporary: Generating a Sync Service Instance
 
