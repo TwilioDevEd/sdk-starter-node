@@ -37,14 +37,14 @@ app.use(bodyParser.json());
 
 // Basic health check - check environment variables have been configured
 // correctly
-app.get('/', function(request, response) {
-  response.render('index.pug', {
+app.get('/config', function(request, response) {
+  response.json( {
     TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
     TWILIO_NOTIFICATION_SERVICE_SID: process.env.TWILIO_NOTIFICATION_SERVICE_SID,
     TWILIO_APN_CREDENTIAL_SID: process.env.TWILIO_APN_CREDENTIAL_SID,
     TWILIO_GCM_CREDENTIAL_SID: process.env.TWILIO_GCM_CREDENTIAL_SID,
     TWILIO_API_KEY: process.env.TWILIO_API_KEY,
-    TWILIO_API_SECRET: process.env.TWILIO_API_SECRET,
+    TWILIO_API_SECRET: process.env.TWILIO_API_SECRET != '',
     TWILIO_IPM_SERVICE_SID: process.env.TWILIO_IPM_SERVICE_SID,
     TWILIO_SYNC_SERVICE_SID: process.env.TWILIO_SYNC_SERVICE_SID,
     TWILIO_CONFIGURATION_SID: process.env.TWILIO_CONFIGURATION_SID

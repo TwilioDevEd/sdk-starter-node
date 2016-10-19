@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Twilio Server Starter Kit</title>
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="index.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <h1>Twilio Server Starter Kit Environment Setup</h1>
+            <h2>Account Information</h2>
+            <table class="table table-striped">
+                <tr>
+                    <td class="config-key">TWILIO_ACCOUNT_SID</td>
+                    <td class="config-value" id="twilioAccountSID"></td>
+                </tr>
+                <tr>
+                    <td class="config-key">TWILIO_API_KEY</td>
+                    <td class="config-value" id="twilioAPIKey"></td>
+                </tr>
+                <tr>
+                    <td class="config-key">TWILIO_API_SECRET</td>
+                    <td class="config-value" id="twilioAPISecret"></td>
+                </tr>
+            </table>
+            <h2>Products</h2>
+            <table class="table table-striped">
+                <tr>
+                    <td class="config-product">Video</td>
+                    <td class="config-key">TWILIO_CONFIGURATION_SID</td>
+                    <td class="config-value" id="twilioConfigurationSID"></td>
+                </tr>
+                <tr>
+                    <td class="config-product">Notify</td>
+                    <td class="config-key">TWILIO_NOTIFICATION_SERVICE_SID</td>
+                    <td class="config-value" id="twilioNotificationServiceSID"></td>
+                </tr>
+                <tr>
+                    <td class="config-product">Notify</td>
+                    <td class="config-key">TWILIO_APN_CREDENTIAL_SID</td>
+                    <td class="config-value" id="twilioAPNCredentialSID"></td>
+                </tr>
+                <tr>
+                    <td class="config-product">Notify</td>
+                    <td class="config-key">TWILIO_GCM_CREDENTIAL_SID</td>
+                    <td class="config-value" id="twilioGCMCredentialSID"></td>
+                </tr>      
+                <tr>
+                    <td class="config-product">IP Messaging</td>
+                    <td class="config-key">TWILIO_IPM_SERVICE_SID</td>
+                    <td class="config-value" id="twilioIPMServiceSID"></td>
+                </tr>      
+                <tr>
+                    <td class="config-product">Sync</td>
+                    <td class="config-key">TWILIO_SYNC_SERVICE_SID</td>
+                    <td class="config-value" id="twilioSyncServiceSID"></td>
+                </tr>                       
+            </table>
+            
+            <h1>Demos</h1>
+            <a id="videoDemoButton" class="btn btn-lg" href="/video">Video</a>
+            <a id="syncDemoButton" class="btn btn-lg"  href="/sync">Sync</a>
+            <a id="notifyDemoButton" class="btn btn-lg" href="/notify">Notify</a>
+            <a id="ipmDemoButton" class="btn btn-lg" href="/ipmessaging">IP Messaging</a>
+    </div> <!-- container -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/config-check.js"></script>
+    </body>
+</script>
