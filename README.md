@@ -76,7 +76,7 @@ node .
 
 Your application should now be running at [http://localhost:3000/](http://localhost:3000/). 
 
-![Home Screen](https://cloud.githubusercontent.com/assets/809856/19492524/9ddad5b6-953c-11e6-8703-0bafc521d8f7.png)
+![Home Screen](https://cloud.githubusercontent.com/assets/809856/19532947/673cc7d6-9603-11e6-9a7c-13c0f9ab33b7.png)
 
 Check your config values, and follow the links to the demo applications!
 
