@@ -144,6 +144,33 @@ var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECR
   });
 });
 
+// Notify - send a notification from a POST HTTP request
+app.post('/send-notification', function(request, response) {
+  
+  // Authenticate with Twilio
+  var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECRET, null, {accountSid:process.env.TWILIO_ACCOUNT_SID});
+
+  // Create a reference to the user notification service
+  var service = client.notify.v1.services(process.env.TWILIO_NOTIFICATION_SERVICE_SID);
+
+  // Send a notification 
+  service.notifications.create({
+    'identity':'' + request.body.identity,
+    'body':'Hello, ' + request.body.identity + '!'
+  }).then(function(message) {
+    console.log(message);
+    response.send({
+      message:'Successful sending notification'
+    });
+  }).catch(function(error) {
+    var message = 'Failed to send notification: ' + error;
+    console.log(message);
+    // Send a JSON response indicating an internal server error
+    response.status(500).send({
+      error: error,
+    });
+  });
+});
 
 // Create http server and run it
 var server = http.createServer(app);
