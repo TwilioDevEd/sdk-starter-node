@@ -23,8 +23,7 @@ $(function () {
     device: getDeviceId()
   }, function (tokenResponse) {
     //Initialize the Sync client
-    accessManager = new Twilio.AccessManager(tokenResponse.token);
-    syncClient = new Twilio.Sync.Client(accessManager);
+    syncClient = new Twilio.Sync.Client(tokenResponse.token);
 
     //Let's pop a message on the screen to show that Sync is ready
     $message.html('Sync initialized!');
@@ -83,13 +82,13 @@ $(function () {
   //For a more robust solution consider a library like
   //fingerprintjs2: https://github.com/Valve/fingerprintjs2
   function getDeviceId() {
-    return 'browser-' + 
+    return 'browser-' +
       'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
          var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
          return v.toString(16);
        });
   }
-  
+
   //Read the state of the UI and create a new document
   function readGameBoardFromUserInterface() {
     var board = [
