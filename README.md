@@ -80,5 +80,13 @@ Your application should now be running at [http://localhost:3000/](http://localh
 
 Check your config values, and follow the links to the demo applications!
 
+## Running the SDK Starter Kit with ngrok
+
+If you are going to connect to this SDK Starter Kit with a mobile app (and you should try it out!), your phone won't be able to access localhost directly. You'll need to create a publicly accessible URL using a tool like [ngrok](https://ngrok.com/) to send HTTP/HTTPS traffic to a server running on your localhost. Use HTTPS to make web connections that retrieve a Twilio access token.
+
+```bash
+ngrok http 3000
+```
+
 ## License
 MIT
