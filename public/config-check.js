@@ -7,7 +7,7 @@ $(function() {
         configureField(response, 'TWILIO_NOTIFICATION_SERVICE_SID','twilioNotificationServiceSID',false);
         configureField(response, 'TWILIO_APN_CREDENTIAL_SID','twilioAPNCredentialSID',false);
         configureField(response, 'TWILIO_GCM_CREDENTIAL_SID','twilioGCMCredentialSID',false);
-        configureField(response, 'TWILIO_IPM_SERVICE_SID','twilioIPMServiceSID',false);
+        configureField(response, 'TWILIO_CHAT_SERVICE_SID','twilioChatServiceSID',false);
         configureField(response, 'TWILIO_SYNC_SERVICE_SID','twilioSyncServiceSID',false);
 
         //configure individual product buttons
@@ -20,10 +20,10 @@ $(function() {
                 $('#videoDemoButton').addClass('btn-danger');  
             }
 
-            if (response.TWILIO_IPM_SERVICE_SID && response.TWILIO_IPM_SERVICE_SID != '') {
-                $('#ipmDemoButton').addClass('btn-success');
+            if (response.TWILIO_CHAT_SERVICE_SID && response.TWILIO_CHAT_SERVICE_SID != '') {
+                $('#chatDemoButton').addClass('btn-success');
             } else {
-                $('#ipmDemoButton').addClass('btn-danger');  
+                $('#chatDemoButton').addClass('btn-danger');  
             }
 
             if (response.TWILIO_SYNC_SERVICE_SID && response.TWILIO_SYNC_SERVICE_SID != '') {
@@ -40,7 +40,7 @@ $(function() {
         }
         else {
             $('#videoDemoButton').addClass('btn-danger');
-            $('#ipmDemoButton').addClass('btn-danger');
+            $('#chatDemoButton').addClass('btn-danger');
             $('#syncDemoButton').addClass('btn-danger');
             $('#notifyDemoButton').addClass('btn-danger');   
         }

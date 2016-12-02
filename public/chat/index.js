@@ -2,11 +2,8 @@ $(function() {
     // Get handle to the chat div 
     var $chatWindow = $('#messages');
 
-    // Manages the state of our access token we got from the server
-    var accessManager;
-
-    // Our interface to the IP Messaging service
-    var messagingClient;
+    // Our interface to the Chat service
+    var chatClient;
 
     // A handle to the "general" chat channel - the one and only channel we
     // will have in this sample app
@@ -54,19 +51,22 @@ $(function() {
         print('You have been assigned a random username of: ' 
             + '<span class="me">' + username + '</span>', true);
 
-        // Initialize the IP messaging client
-        accessManager = new Twilio.AccessManager(data.token);
-        messagingClient = new Twilio.IPMessaging.Client(accessManager);
+        // Initialize the Chat client
+        chatClient = new Twilio.Chat.Client(data.token);
+        chatClient.getUserChannels().then(createOrJoinGeneralChannel);        
+    });
 
+    function createOrJoinGeneralChannel() {
         // Get the general chat channel, which is where all the messages are
         // sent in this simple application
         print('Attempting to join "general" chat channel...');
-        var promise = messagingClient.getChannelByUniqueName('general');
+        var promise = chatClient.getChannelByUniqueName('general');
         promise.then(function(channel) {
             generalChannel = channel;
             if (!generalChannel) {
                 // If it doesn't exist, let's create it
-                messagingClient.createChannel({
+                console.log('Creating general channel');
+                chatClient.createChannel({
                     uniqueName: 'general',
                     friendlyName: 'General Chat Channel'
                 }).then(function(channel) {
@@ -81,7 +81,7 @@ $(function() {
                 setupChannel();
             }
         });
-    });
+    }
 
     // Set up channel after it has been found
     function setupChannel() {

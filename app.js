@@ -45,7 +45,7 @@ app.get('/config', function(request, response) {
     TWILIO_GCM_CREDENTIAL_SID: process.env.TWILIO_GCM_CREDENTIAL_SID,
     TWILIO_API_KEY: process.env.TWILIO_API_KEY,
     TWILIO_API_SECRET: process.env.TWILIO_API_SECRET != '',
-    TWILIO_IPM_SERVICE_SID: process.env.TWILIO_IPM_SERVICE_SID,
+    TWILIO_CHAT_SERVICE_SID: process.env.TWILIO_CHAT_SERVICE_SID,
     TWILIO_SYNC_SERVICE_SID: process.env.TWILIO_SYNC_SERVICE_SID,
     TWILIO_CONFIGURATION_SID: process.env.TWILIO_CONFIGURATION_SID
   });
@@ -75,7 +75,7 @@ app.get('/token', function(request, response) {
         token.addGrant(conversationsGrant);
     }
 
-    if (request.query.device && process.env.TWILIO_IPM_SERVICE_SID) {
+    if (request.query.device && process.env.TWILIO_CHAT_SERVICE_SID) {
         // Create a unique ID for the client on their current device
         var appName = 'TwilioChatDemo';
         var endpointId = appName + ':' + token.identity + ':' + request.query.device;
@@ -83,7 +83,7 @@ app.get('/token', function(request, response) {
         // Create a "grant" which enables a client to use IPM as a given user,
         // on a given device
         var ipmGrant = new IpMessagingGrant({
-            serviceSid: process.env.TWILIO_IPM_SERVICE_SID,
+            serviceSid: process.env.TWILIO_CHAT_SERVICE_SID,
             endpointId: endpointId
         });
         token.addGrant(ipmGrant);
