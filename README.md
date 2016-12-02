@@ -2,7 +2,7 @@
 
 This sample project demonstrates how to use Twilio APIs in a Node.js web 
 application. Once the app is up and running, check out [the home page](http://localhost:3000)
-to see which demos you can run. You'll find examples for [IP Messaging](https://www.twilio.com/ip-messaging), 
+to see which demos you can run. You'll find examples for [Chat](https://www.twilio.com/chat), 
 [Video](https://www.twilio.com/video), [Sync](https://www.twilio.com/sync), and more.
 
 Let's get started!
@@ -41,7 +41,7 @@ Depending on which demos you'd like to run, you'll need to configure a few more 
 
 | Config Value  | Product Demo | Description |
 | :-------------  |:------------- |:------------- |
-`TWILIO_IPM_SERVICE_SID` | IP Messaging | Like a database for your IP Messaging data - [generate one in the console here](https://www.twilio.com/console/ip-messaging/services)
+`TWILIO_CHAT_SERVICE_SID` | Chat | Like a database for your Chat data - [generate one in the console here](https://www.twilio.com/console/chat/services)
 `TWILIO_CONFIGURATION_SID` | Video | Identifier for a set of config properties for your video application - [find yours here](https://www.twilio.com/console/video/profiles)
 `TWILIO_SYNC_SERVICE_SID` | Sync (Preview) | Like a database for your Sync data - generate one with the curl command below.
 `TWILIO_NOTIFICATION_SERVICE_SID` | Notify (Preview) | You will need to create a Notify service - [generate one here](https://www.twilio.com/console/notify/services)
