@@ -63,23 +63,21 @@ $(function() {
         var promise = chatClient.getChannelByUniqueName('general');
         promise.then(function(channel) {
             generalChannel = channel;
-            if (!generalChannel) {
-                // If it doesn't exist, let's create it
-                console.log('Creating general channel');
-                chatClient.createChannel({
-                    uniqueName: 'general',
-                    friendlyName: 'General Chat Channel'
-                }).then(function(channel) {
-                    console.log('Created general channel:');
-                    console.log(channel);
-                    generalChannel = channel;
-                    setupChannel();
-                });
-            } else {
-                console.log('Found general channel:');
-                console.log(generalChannel);
+            console.log('Found general channel:');
+            console.log(generalChannel);
+            setupChannel();
+        }).catch(function() {
+            // If it doesn't exist, let's create it
+            console.log('Creating general channel');
+            chatClient.createChannel({
+                uniqueName: 'general',
+                friendlyName: 'General Chat Channel'
+            }).then(function(channel) {
+                console.log('Created general channel:');
+                console.log(channel);
+                generalChannel = channel;
                 setupChannel();
-            }
+            });
         });
     }
 
