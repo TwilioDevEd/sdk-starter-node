@@ -76,13 +76,10 @@ app.get('/token', function(request, response) {
     if (request.query.device && process.env.TWILIO_CHAT_SERVICE_SID) {
         // Create a unique ID for the client on their current device
         var appName = 'TwilioChatDemo';
-        var endpointId = appName + ':' + token.identity + ':' + request.query.device;
-        
         // Create a "grant" which enables a client to use IPM as a given user,
         // on a given device
         var ipmGrant = new IpMessagingGrant({
-            serviceSid: process.env.TWILIO_CHAT_SERVICE_SID,
-            endpointId: endpointId
+            serviceSid: process.env.TWILIO_CHAT_SERVICE_SID
         });
         token.addGrant(ipmGrant);
     }
