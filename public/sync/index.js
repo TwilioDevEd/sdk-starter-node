@@ -5,9 +5,6 @@ $(function () {
   //Get handle to the game board buttons
   var $buttons = $('#board .board-row button');
 
-  //Manages the state of our access token we got from the server
-  var accessManager;
-
   //Our interface to the Sync service
   var syncClient;
 
@@ -19,11 +16,9 @@ $(function () {
   //In browser-based apps, every tab is like its own unique device
   //synchronizing state -- so we'll use a random UUID to identify
   //this tab.
-  $.getJSON('/token', {
-    device: getDeviceId()
-  }, function (tokenResponse) {
+  $.getJSON('/token', function (tokenResponse) {
     //Initialize the Sync client
-    syncClient = new Twilio.Sync.Client(tokenResponse.token);
+    syncClient = new Twilio.Sync.Client(tokenResponse.token, { logLevel: 'info' });
 
     //Let's pop a message on the screen to show that Sync is ready
     $message.html('Sync initialized!');
@@ -76,17 +71,6 @@ $(function () {
     } else {
       $cell.html('X');
     }
-  }
-
-  //Generate random UUID to identify this browser tab
-  //For a more robust solution consider a library like
-  //fingerprintjs2: https://github.com/Valve/fingerprintjs2
-  function getDeviceId() {
-    return 'browser-' +
-      'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-         return v.toString(16);
-       });
   }
 
   //Read the state of the UI and create a new document
