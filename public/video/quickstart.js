@@ -1,8 +1,31 @@
-var videoClient;
 var activeRoom;
-var previewMedia;
+var previewTracks;
 var identity;
 var roomName;
+
+function attachTracks(tracks, container) {
+  tracks.forEach(function(track) {
+    container.appendChild(track.attach());
+  });
+}
+
+function attachParticipantTracks(participant, container) {
+  var tracks = Array.from(participant.tracks.values());
+  attachTracks(tracks, container);
+}
+
+function detachTracks(tracks) {
+  tracks.forEach(function(track) {
+    track.detach().forEach(function(detachedElement) {
+      detachedElement.remove();
+    });
+  });
+}
+
+function detachParticipantTracks(participant) {
+  var tracks = Array.from(participant.tracks.values());
+  detachTracks(tracks);
+}
 
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
@@ -13,11 +36,9 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 // from the room, if joined.
 window.addEventListener('beforeunload', leaveRoomIfJoined);
 
-$.getJSON('/token', function (data) {
+$.getJSON('/token', function(data) {
   identity = data.identity;
 
-  // Create a Conversations Client and connect to Twilio
-  videoClient = new Twilio.Video.Client(data.token);
   document.getElementById('room-controls').style.display = 'block';
 
   // Bind button to join room
@@ -26,10 +47,14 @@ $.getJSON('/token', function (data) {
     if (roomName) {
       log("Joining room '" + roomName + "'...");
 
-      videoClient.connect({ to: roomName}).then(roomJoined,
-        function(error) {
-          log('Could not connect to Twilio: ' + error.message);
-        });
+      var connectOptions = { name: roomName, logLevel: 'debug' };
+      if (previewTracks) {
+        connectOptions.tracks = previewTracks;
+      }
+
+      Twilio.Video.connect(data.token, connectOptions).then(roomJoined, function(error) {
+        log('Could not connect to Twilio: ' + error.message);
+      });
     } else {
       alert('Please enter a room name.');
     }
@@ -51,39 +76,45 @@ function roomJoined(room) {
   document.getElementById('button-leave').style.display = 'inline';
 
   // Draw local video, if not already previewing
-  if (!previewMedia) {
-    room.localParticipant.media.attach('#local-media');
+  var previewContainer = document.getElementById('local-media');
+  if (!previewContainer.querySelector('video')) {
+    attachParticipantTracks(room.localParticipant, previewContainer);
   }
 
   room.participants.forEach(function(participant) {
     log("Already in Room: '" + participant.identity + "'");
-    participant.media.attach('#remote-media');
+    var previewContainer = document.getElementById('remote-media');
+    attachParticipantTracks(participant, previewContainer);
   });
 
   // When a participant joins, draw their video on screen
-  room.on('participantConnected', function (participant) {
+  room.on('participantConnected', function(participant) {
     log("Joining: '" + participant.identity + "'");
-    participant.media.attach('#remote-media');
+  });
 
-    participant.on('disconnected', function (participant) {
-      log("Participant '" + participant.identity + "' left the room");
-    });
+  room.on('trackAdded', function(track, participant) {
+    log(participant.identity + " added track: " + track.kind);
+    var previewContainer = document.getElementById('remote-media');
+    attachTracks([track], previewContainer);
+  });
+
+  room.on('trackRemoved', function(track, participant) {
+    log(participant.identity + " removed track: " + track.kind);
+    detachTracks([track]);
   });
 
   // When a participant disconnects, note in log
-  room.on('participantDisconnected', function (participant) {
+  room.on('participantDisconnected', function(participant) {
     log("Participant '" + participant.identity + "' left the room");
-    participant.media.detach();
+    detachParticipantTracks(participant);
   });
 
-  // When the conversation ends, stop capturing local video
+  // When we are disconnected, stop capturing local video
   // Also remove media for all remote participants
-  room.on('disconnected', function () {
+  room.on('disconnected', function() {
     log('Left');
-    room.localParticipant.media.detach();
-    room.participants.forEach(function(participant) {
-      participant.media.detach();
-    });
+    detachParticipantTracks(room.localParticipant);
+    room.participants.forEach(detachParticipantTracks);
     activeRoom = null;
     document.getElementById('button-join').style.display = 'inline';
     document.getElementById('button-leave').style.display = 'none';
@@ -91,19 +122,21 @@ function roomJoined(room) {
 }
 
 //  Local video preview
-document.getElementById('button-preview').onclick = function () {
-  if (!previewMedia) {
-    previewMedia = new Twilio.Video.LocalMedia();
-    Twilio.Video.getUserMedia().then(
-    function (mediaStream) {
-      previewMedia.addStream(mediaStream);
-      previewMedia.attach('#local-media');
-    },
-    function (error) {
-      console.error('Unable to access local media', error);
-      log('Unable to access Camera and Microphone');
-    });
-  };
+document.getElementById('button-preview').onclick = function() {
+  var localTracksPromise = previewTracks
+    ? Promise.resolve(previewTracks)
+    : Twilio.Video.createLocalTracks();
+
+  localTracksPromise.then(function(tracks) {
+    previewTracks = tracks;
+    var previewContainer = document.getElementById('local-media');
+    if (!previewContainer.querySelector('video')) {
+      attachTracks(tracks, previewContainer);
+    }
+  }, function(error) {
+    console.error('Unable to access local media', error);
+    log('Unable to access Camera and Microphone');
+  });
 };
 
 // Activity log
