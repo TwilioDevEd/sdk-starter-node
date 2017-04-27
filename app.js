@@ -12,7 +12,7 @@ var Twilio = require('twilio');
 var AccessToken = Twilio.jwt.AccessToken;
 
 // Grant Video capability
-var ConversationsGrant = AccessToken.ConversationsGrant;
+var VideoGrant = AccessToken.VideoGrant;
 
 // Grant IP Messaging capability
 var IpMessagingGrant = AccessToken.IpMessagingGrant;
@@ -55,7 +55,7 @@ username for the client requesting a token, and takes a device ID as a query
 parameter.
 */
 app.get('/token', function(request, response) {
-    
+
     // Create an access token which we will sign and return to the client
     var token = new AccessToken(
         process.env.TWILIO_ACCOUNT_SID,
@@ -68,9 +68,11 @@ app.get('/token', function(request, response) {
 
     //grant the access token Twilio Video capabilities
     if (process.env.TWILIO_CONFIGURATION_SID) {
-        var conversationsGrant = new ConversationsGrant();
-        conversationsGrant.configurationProfileSid = process.env.TWILIO_CONFIGURATION_SID;
-        token.addGrant(conversationsGrant);
+        var videoGrant = new VideoGrant({
+          room: 'default room'
+        });
+
+        token.addGrant(videoGrant);
     }
 
     if (process.env.TWILIO_CHAT_SERVICE_SID) {
@@ -87,7 +89,7 @@ app.get('/token', function(request, response) {
     if (process.env.TWILIO_SYNC_SERVICE_SID) {
         // Create a unique ID for the client on their current device
         var appName = 'TwilioSyncDemo';
-        
+
         // Create a "grant" which enables a client to use Sync as a given user,
         // on a given device
         var syncGrant = new SyncGrant({
@@ -106,10 +108,10 @@ app.get('/token', function(request, response) {
 
 // Notify - create a device binding from a POST HTTP request
 app.post('/register', function(request, response) {
-  
+
   // Authenticate with Twilio
 var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECRET, null, {accountSid:process.env.TWILIO_ACCOUNT_SID});
-  
+
   // Get a reference to the user notification service instance
   var service = client.notify.v1.services(process.env.TWILIO_NOTIFICATION_SERVICE_SID);
 
@@ -128,7 +130,7 @@ var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECR
   }).catch(function(error) {
     var message = 'Failed to create binding: ' + error;
     console.log(message);
-    
+
     // Send a JSON response indicating an internal server error
     response.status(500).send({
       error: error,
@@ -139,14 +141,14 @@ var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECR
 
 // Notify - send a notification from a POST HTTP request
 app.post('/send-notification', function(request, response) {
-  
+
   // Authenticate with Twilio
   var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECRET, null, {accountSid:process.env.TWILIO_ACCOUNT_SID});
 
   // Create a reference to the user notification service
   var service = client.notify.v1.services(process.env.TWILIO_NOTIFICATION_SERVICE_SID);
 
-  // Send a notification 
+  // Send a notification
   service.notifications.create({
     'identity':'' + request.body.identity,
     'body':'Hello, ' + request.body.identity + '!'
