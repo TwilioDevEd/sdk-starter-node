@@ -3,6 +3,7 @@
 </a>
 
 # Twilio SDK Starter Application for Node.js
+[![Build Status](https://travis-ci.org/TwilioDevEd/sdk-starter-node.svg)](https://travis-ci.org/TwilioDevEd/sdk-starter-node)
 
 This sample project demonstrates how to use Twilio APIs in a Node.js web
 application. Once the app is up and running, check out [the home page](http://localhost:3000)
@@ -64,7 +65,7 @@ npm install
 Now we should be all set! Run the application using the `node` command.
 
 ```bash
-node .
+npm start
 ```
 
 Your application should now be running at [http://localhost:3000/](http://localhost:3000/).
@@ -81,5 +82,8 @@ If you are going to connect to this SDK Starter Kit with a mobile app (and you s
 ngrok http 3000
 ```
 
-## License
-MIT
+## Meta
+
+* No warranty expressed or implied. Software is as is. Diggity.
+* [MIT License](http://www.opensource.org/licenses/mit-license.html)
+* Lovingly crafted by Twilio Developer Education.

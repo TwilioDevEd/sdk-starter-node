@@ -1,61 +1,58 @@
 $(function() {
-    $.get('/config', function(response) {
-        configureField(response, 'TWILIO_ACCOUNT_SID', 'twilioAccountSID', false);
-        configureField(response, 'TWILIO_API_KEY', 'twilioAPIKey', false);
-        configureField(response, 'TWILIO_API_SECRET', 'twilioAPISecret', true);
-        configureField(response, 'TWILIO_NOTIFICATION_SERVICE_SID', 'twilioNotificationServiceSID', false);
-        configureField(response, 'TWILIO_CHAT_SERVICE_SID', 'twilioChatServiceSID', false);
-        configureField(response, 'TWILIO_SYNC_SERVICE_SID', 'twilioSyncServiceSID', false);
+  $.get('/config', function(response) {
+    Object.keys(fields).forEach(configureField(fields, response));
+    Object.keys(buttons).forEach(configureButton(buttons, response));
+  });
 
-        //configure individual product buttons
-        if (response.TWILIO_ACCOUNT_SID && response.TWILIO_ACCOUNT_SID != '' &&
-            response.TWILIO_API_KEY && response.TWILIO_API_KEY != '' && response.TWILIO_API_SECRET) {
+  // Button Ids' and Config Keys
+  var buttons = {
+    videoDemoButton: 'TwilioApiSecret',
+    chatDemoButton: 'TwilioChatServiceSid',
+    syncDemoButton: 'TwilioSyncServiceSid',
+    notifyDemoButton: 'TwilioNotificationServiceSid'
+  };
 
-            $('#videoDemoButton').addClass('btn-success');
+  // Field Ids' and Masked Flag
+  var fields = {
+    twilioAccountSid: false,
+    twilioApiKey: false,
+    twilioApiSecret: true,
+    twilioNotificationServiceSid: false,
+    twilioChatServiceSid: false,
+    twilioSyncServiceSid: false
+  };
 
-            if (response.TWILIO_CHAT_SERVICE_SID && response.TWILIO_CHAT_SERVICE_SID != '') {
-                $('#chatDemoButton').addClass('btn-success');
-            } else {
-                $('#chatDemoButton').addClass('btn-danger');
-            }
-
-            if (response.TWILIO_SYNC_SERVICE_SID && response.TWILIO_SYNC_SERVICE_SID != '') {
-                $('#syncDemoButton').addClass('btn-success');
-            } else {
-                $('#syncDemoButton').addClass('btn-danger');
-            }
-
-            if (response.TWILIO_NOTIFICATION_SERVICE_SID && response.TWILIO_NOTIFICATION_SERVICE_SID != '') {
-                $('#notifyDemoButton').addClass('btn-success');
-            } else {
-                $('#notifyDemoButton').addClass('btn-danger');
-            }
-        }
-        else {
-            $('#videoDemoButton').addClass('btn-danger');
-            $('#chatDemoButton').addClass('btn-danger');
-            $('#syncDemoButton').addClass('btn-danger');
-            $('#notifyDemoButton').addClass('btn-danger');
-        }
-    });
-
-    var configureField = function(response, keyName, elementId, masked) {
-        if (masked) {
-            if (response[keyName]) {
-                $('#' + elementId).html('Configured properly');
-                $('#' + elementId).addClass('set');
-            } else {
-                $('#' + elementId).html('Not configured in .env');
-                $('#' + elementId).addClass('unset');
-            }
-        } else {
-            if (response[keyName] && response[keyName] != '') {
-                $('#' + elementId).html(response[keyName]);
-                $('#' + elementId).addClass('set');
-            } else {
-                $('#' + elementId).html('Not configured in .env');
-                $('#' + elementId).addClass('unset');
-            }
-        }
+  var configureField = function(fields, response) {
+    var htmlContent = 'Not configured in .env';
+    var cssClass = 'unset';
+    return function(fieldId) {
+      var configKey = strToConfig(fieldId);
+      var isMasked = fields[fieldId];
+      if (!!response[configKey]) {
+        htmlContent = isMasked ? 'Configured properly' : response[configKey];
+        cssClass = 'set';
+      }
+      $('#' + fieldId).html(htmlContent).addClass(cssClass);
     };
+  };
+
+  var configureButton = function(buttons, response) {
+    var hasBasicConfig = !!response.TWILIO_ACCOUNT_SID &&
+                         !!response.TWILIO_API_KEY &&
+                         !!response.TWILIO_API_SECRET;
+    return function(buttonId) {
+      var configKey = strToConfig(buttons[buttonId]);
+      var cssClass = hasBasicConfig && !!response[configKey]
+        ? 'btn-success'
+        : 'btn-danger';
+      $('#' + buttonId).addClass(cssClass);
+    };
+  };
+
+  var strToConfig = function(string) {
+    return string
+      .split(/(?=[A-Z])/)
+      .map(function(e) { return e.toUpperCase(); })
+      .join('_');
+  }
 });

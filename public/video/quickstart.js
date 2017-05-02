@@ -124,8 +124,8 @@ function roomJoined(room) {
 //  Local video preview
 document.getElementById('button-preview').onclick = function() {
   var localTracksPromise = previewTracks
-    ? Promise.resolve(previewTracks)
-    : Twilio.Video.createLocalTracks();
+  ? Promise.resolve(previewTracks)
+  : Twilio.Video.createLocalTracks();
 
   localTracksPromise.then(function(tracks) {
     previewTracks = tracks;
