@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - 'stable'
+
+before_script:
+    - cp .env.example .env
+
+cache:
+  directories:
+    - node_modules
