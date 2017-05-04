@@ -4,7 +4,7 @@
   "description": "Starter Server Application for Node.js",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,13 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "pug": "^2.0.0-beta6",
-    "twilio": "^3.0.0-rc.13"
+    "twilio": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "chai-xml": "^0.3.1",
+    "mocha": "^3.2.0",
+    "mockery": "^2.0.0"
   }
 }

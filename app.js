@@ -55,6 +55,7 @@ username for the client requesting a token, and takes a device ID as a query
 parameter.
 */
 app.get('/token', function(request, response) {
+    console.log(`token identity: ${randomUsername()}`)
 
     // Create an access token which we will sign and return to the client
     var token = new AccessToken(
@@ -65,7 +66,6 @@ app.get('/token', function(request, response) {
 
     // Assign the generated identity to the token
     token.identity = randomUsername();
-
     //grant the access token Twilio Video capabilities
     if (process.env.TWILIO_CONFIGURATION_SID) {
         var videoGrant = new VideoGrant({
@@ -173,3 +173,5 @@ var port = process.env.PORT || 3000;
 server.listen(port, function() {
     console.log('Express server running on *:' + port);
 });
+
+module.exports = app;
