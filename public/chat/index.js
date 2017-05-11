@@ -53,7 +53,7 @@ $(function() {
 
         // Initialize the Chat client
         chatClient = new Twilio.Chat.Client(data.token);
-        chatClient.getUserChannels().then(createOrJoinGeneralChannel);        
+        chatClient.getSubscribedChannels().then(createOrJoinGeneralChannel);        
     });
 
     function createOrJoinGeneralChannel() {
