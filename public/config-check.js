@@ -1,15 +1,17 @@
 $(function() {
     $.get('/config', function(response) {
-        configureField(response, 'TWILIO_ACCOUNT_SID','twilioAccountSID',false);
-        configureField(response, 'TWILIO_API_KEY','twilioAPIKey',false);
-        configureField(response, 'TWILIO_API_SECRET','twilioAPISecret',true);
-        configureField(response, 'TWILIO_NOTIFICATION_SERVICE_SID','twilioNotificationServiceSID',false);
-        configureField(response, 'TWILIO_CHAT_SERVICE_SID','twilioChatServiceSID',false);
-        configureField(response, 'TWILIO_SYNC_SERVICE_SID','twilioSyncServiceSID',false);
+        configureField(response, 'TWILIO_ACCOUNT_SID', 'twilioAccountSID', false);
+        configureField(response, 'TWILIO_API_KEY', 'twilioAPIKey', false);
+        configureField(response, 'TWILIO_API_SECRET', 'twilioAPISecret', true);
+        configureField(response, 'TWILIO_NOTIFICATION_SERVICE_SID', 'twilioNotificationServiceSID', false);
+        configureField(response, 'TWILIO_CHAT_SERVICE_SID', 'twilioChatServiceSID', false);
+        configureField(response, 'TWILIO_SYNC_SERVICE_SID', 'twilioSyncServiceSID', false);
 
         //configure individual product buttons
         if (response.TWILIO_ACCOUNT_SID && response.TWILIO_ACCOUNT_SID != '' &&
             response.TWILIO_API_KEY && response.TWILIO_API_KEY != '' && response.TWILIO_API_SECRET) {
+
+            $('#videoDemoButton').addClass('btn-success');
 
             if (response.TWILIO_CHAT_SERVICE_SID && response.TWILIO_CHAT_SERVICE_SID != '') {
                 $('#chatDemoButton').addClass('btn-success');
@@ -35,12 +37,9 @@ $(function() {
             $('#syncDemoButton').addClass('btn-danger');
             $('#notifyDemoButton').addClass('btn-danger');
         }
-
-
-
     });
 
-    var configureField = function(response, keyName,elementId,masked) {
+    var configureField = function(response, keyName, elementId, masked) {
         if (masked) {
             if (response[keyName]) {
                 $('#' + elementId).html('Configured properly');
@@ -58,6 +57,5 @@ $(function() {
                 $('#' + elementId).addClass('unset');
             }
         }
-
     };
 });
