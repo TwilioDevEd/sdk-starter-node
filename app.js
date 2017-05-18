@@ -45,7 +45,6 @@ app.get('/config', function(request, response) {
     TWILIO_API_SECRET: process.env.TWILIO_API_SECRET != '',
     TWILIO_CHAT_SERVICE_SID: process.env.TWILIO_CHAT_SERVICE_SID,
     TWILIO_SYNC_SERVICE_SID: process.env.TWILIO_SYNC_SERVICE_SID,
-    TWILIO_CONFIGURATION_SID: process.env.TWILIO_CONFIGURATION_SID
   });
 });
 
@@ -66,14 +65,13 @@ app.get('/token', function(request, response) {
 
     // Assign the generated identity to the token
     token.identity = randomUsername();
+    
     //grant the access token Twilio Video capabilities
-    if (process.env.TWILIO_CONFIGURATION_SID) {
-        var videoGrant = new VideoGrant({
-          room: 'default room'
-        });
+    var videoGrant = new VideoGrant({
+      room: 'default room'
+    });
 
-        token.addGrant(videoGrant);
-    }
+    token.addGrant(videoGrant);
 
     if (process.env.TWILIO_CHAT_SERVICE_SID) {
         // Create a unique ID for the client on their current device
