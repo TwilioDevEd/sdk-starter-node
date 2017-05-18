@@ -41,8 +41,7 @@ describe('SDK Starter', function() {
       'TWILIO_API_KEY',
       'TWILIO_API_SECRET',
       'TWILIO_CHAT_SERVICE_SID',
-      'TWILIO_SYNC_SERVICE_SID',
-      'TWILIO_CONFIGURATION_SID'
+      'TWILIO_SYNC_SERVICE_SID'
     ];
     chai.request(server)
       .get('/config')
