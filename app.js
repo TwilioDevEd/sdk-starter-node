@@ -67,9 +67,7 @@ app.get('/token', function(request, response) {
     token.identity = randomUsername();
     
     //grant the access token Twilio Video capabilities
-    var videoGrant = new VideoGrant({
-      room: 'default room'
-    });
+    var videoGrant = new VideoGrant();
 
     token.addGrant(videoGrant);
 
