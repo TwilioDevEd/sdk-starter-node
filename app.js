@@ -141,7 +141,7 @@ var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECR
 app.post('/send-notification', function(request, response) {
 
   // Authenticate with Twilio
-  var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECRET, null, {accountSid:process.env.TWILIO_ACCOUNT_SID});
+  var client = new Twilio(process.env.TWILIO_API_KEY,  process.env.TWILIO_API_SECRET , {accountSid:process.env.TWILIO_ACCOUNT_SID});
 
   // Create a reference to the user notification service
   var service = client.notify.v1.services(process.env.TWILIO_NOTIFICATION_SERVICE_SID);
