@@ -4,7 +4,8 @@
   "description": "Starter Server Application for Node.js",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
