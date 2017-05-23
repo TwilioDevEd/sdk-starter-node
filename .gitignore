@@ -1,6 +1,7 @@
 # Specific to this application
 .env
 .DS_Store
+.idea
 
 # Logs
 logs
