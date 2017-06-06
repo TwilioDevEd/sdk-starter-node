@@ -65,7 +65,7 @@ app.get('/token', function(request, response) {
 
     // Assign the generated identity to the token
     token.identity = randomUsername();
-    
+
     //grant the access token Twilio Video capabilities
     var videoGrant = new VideoGrant();
 
@@ -147,7 +147,7 @@ app.post('/send-notification', function(request, response) {
   // Send a notification
   service.notifications.create({
     'identity':'' + request.body.identity,
-    'body':'Hello, ' + request.body.identity + '!'
+    'body': 'Hello, world!'
   }).then(function(message) {
     console.log(message);
     response.send({
