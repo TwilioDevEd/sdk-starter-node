@@ -10,4 +10,15 @@ describe('#tokenGenerator', () => {
     expect(decoded).toHaveProperty('payload.grants.ip_messaging.service_sid');
     expect(decoded).toHaveProperty('payload.grants.data_sync.service_sid');
   });
+
+  it('generates a new token using the specified identity', () => {
+    const identity = "Alice";
+    const token = tokenGenerator(identity);
+    const decoded = jwt.decode(token.token, {complete: true});
+
+    expect(token.identity).toEqual(identity);
+    expect(decoded).toHaveProperty('payload.grants.identity', token.identity);
+  });
+
+
 });

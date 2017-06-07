@@ -10,6 +10,11 @@ router.get('/token', (req, res) => {
   res.send(tokenGenerator());
 });
 
+router.post('/token', (req, res) => {
+  const identity = req.body.identity;
+  res.send(tokenGenerator(identity));
+});
+
 router.post('/register', (req, res) => {
   const endpoint = req.body.endpoint;
   const identity = req.body.identity;
