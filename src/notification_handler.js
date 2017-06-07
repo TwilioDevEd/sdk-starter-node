@@ -44,7 +44,7 @@ exports.sendNotification = function sendNotification(identity) {
   const service = getTwilioClient();
 
   // Send a notification
-  service.notifications.create({
+  return service.notifications.create({
     'identity': identity,
     'body': 'Hello, world!',
   }).then((message) => {
