@@ -4,8 +4,8 @@
   "description": "Starter Server Application for Node.js",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "NODE_ENV=test && ./node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",
@@ -25,10 +25,7 @@
     "twilio": "3.1.0-alpha-1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
-    "chai-xml": "^0.3.1",
-    "mocha": "^3.2.0",
-    "mockery": "^2.0.0"
+    "jest": "^19.0.2",
+    "jsonwebtoken": "^7.4.0"
   }
 }

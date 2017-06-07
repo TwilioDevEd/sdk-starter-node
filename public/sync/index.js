@@ -84,7 +84,7 @@ $(function () {
     for (var row = 0; row < 3; row++) {
       for (var col = 0; col < 3; col++) {
         var selector = '[data-row="' + row + '"]' +
-          '[data-col="' + col + '"]';
+        '[data-col="' + col + '"]';
         board[row][col] = $(selector).html().replace('&nbsp;', '');
       }
     }
@@ -97,11 +97,10 @@ $(function () {
     for (var row = 0; row < 3; row++) {
       for (var col = 0; col < 3; col++) {
         var selector = '[data-row="' + row + '"]' +
-          '[data-col="' + col + '"]';
+        '[data-col="' + col + '"]';
         var cellValue = data.board[row][col];
         $(selector).html(cellValue === '' ? '&nbsp;' : cellValue);
       }
     }
   }
-
 });
