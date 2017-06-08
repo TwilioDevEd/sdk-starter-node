@@ -30,8 +30,7 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/send-notification', (req, res) => {
-  const identity = req.body.identity;
-  sendNotification(identity).then((data) => {
+  sendNotification(req.body).then((data) => {
     res.status(data.status);
     res.send(data.data);
   });

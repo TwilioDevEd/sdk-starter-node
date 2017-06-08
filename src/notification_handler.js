@@ -39,15 +39,12 @@ exports.registerBind = function registerBind(binding) {
 };
 
 // Notify - send a notification from a POST HTTP request
-exports.sendNotification = function sendNotification(identity) {
+exports.sendNotification = function sendNotification(notification) {
   // Create a reference to the user notification service
   const service = getTwilioClient();
 
   // Send a notification
-  return service.notifications.create({
-    'identity': identity,
-    'body': 'Hello, world!',
-  }).then((message) => {
+  return service.notifications.create(notification).then((message) => {
     console.log(message);
     return {
       status: 200,
