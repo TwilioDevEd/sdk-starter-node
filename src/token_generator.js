@@ -26,12 +26,8 @@ function tokenGenerator(identity = 0) {
     config.TWILIO_API_SECRET
   );
 
-  if (identity) {
-    token.identity = identity;
-  } else {
-    // Assign the generated identity to the token
-    token.identity = nameGenerator();
-  }
+  // Assign the provided identity or generate a new one
+  token.identity = identity || nameGenerator();
 
   // Grant the access token Twilio Video capabilities
   const videoGrant = new VideoGrant();
