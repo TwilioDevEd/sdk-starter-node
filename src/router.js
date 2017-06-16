@@ -16,14 +16,7 @@ router.post('/token', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  const endpoint = req.body.endpoint;
-  const identity = req.body.identity;
-  const bindingType = req.body.BindingType;
-  const address = req.body.Address;
-  registerBind({
-    endpoint, identity,
-    bindingType, address
-  }).then((data) => {
+  registerBind(req.body).then((data) => {
     res.status(data.status);
     res.send(data.data);
   });

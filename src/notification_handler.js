@@ -6,10 +6,6 @@ const config = require('./config');
  * Create a device binding from a POST HTTP request
  *
  * @param {Object} binding
- *        {Object.endpoint} String
- *        {Object.identity} String
- *        {Object.bindingType} String
- *        {Object.address} String
  *
  * @return {Promise}
  *         {Object.status}
