@@ -6,6 +6,17 @@ const config = require('./config');
 
 const router = new Router();
 
+// Convert keys to camelCase to conform with the twilio-node api definition contract
+const camelCase = require('camelcase');
+function camelCaseKeys(hashmap) {
+  var newhashmap = {};
+  Object.keys(hashmap).forEach(function(key) {
+    var newkey = camelCase(key);
+    newhashmap[newkey] = hashmap[key];
+  });
+  return newhashmap;
+};
+
 router.get('/token', (req, res) => {
   res.send(tokenGenerator());
 });
@@ -16,14 +27,16 @@ router.post('/token', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  registerBind(req.body).then((data) => {
+  var content = camelCaseKeys(req.body);
+  registerBind(content).then((data) => {
     res.status(data.status);
     res.send(data.data);
   });
 });
 
 router.post('/send-notification', (req, res) => {
-  sendNotification(req.body).then((data) => {
+  var content = camelCaseKeys(req.body);
+  sendNotification(content).then((data) => {
     res.status(data.status);
     res.send(data.data);
   });
