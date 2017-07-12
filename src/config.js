@@ -1,3 +1,4 @@
+require('dotenv').load();
 if (process.env.VCAP_SERVICES) {
     var env = JSON.parse(process.env.VCAP_SERVICES);
     var local_creds = env['user-provided'][0].credentials;
