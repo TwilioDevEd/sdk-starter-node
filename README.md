@@ -10,6 +10,8 @@ application. Once the app is up and running, check out [the home page](http://lo
 to see which demos you can run. You'll find examples for [Chat](https://www.twilio.com/chat),
 [Video](https://www.twilio.com/video), [Sync](https://www.twilio.com/sync), and more.
 
+Note that IBM Bluemix deployment instructions [can be found here](./BLUEMIX.md)
+
 Let's get started!
 
 ## Configure the sample application
