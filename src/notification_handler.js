@@ -71,7 +71,7 @@ function getTwilioClient() {
   );
 
   // Get a reference to the user notification service instance
-  const service = client.notify.v1.services(
+  const service = client.notify.services(
     config.TWILIO_NOTIFICATION_SERVICE_SID
   );
 
