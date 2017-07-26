@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/TwilioDevEd/sdk-starter-node#readme",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.17.2",
     "dotenv": "^2.0.0",
-    "express": "^4.14.0",
-    "pug": "^2.0.0-beta6",
     "camelcase": "^4.1.0",
-    "twilio": "3.1.0-alpha-1"
+    "express": "^4.15.3",
+    "pug": "^2.0.0-rc.2",
+    "twilio": "^3.5.0-alpha.1"
   },
   "devDependencies": {
     "jest": "^19.0.2",
