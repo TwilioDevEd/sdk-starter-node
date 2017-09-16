@@ -41,7 +41,7 @@ router.get('/token/:id', (req, res) => {
   });
 });
 
-router.post('/token', (req, res) => {
+router.get('/token', (req, res) => {
   const identity = req.body.identity;
   res.send(tokenGenerator(identity));
 });
