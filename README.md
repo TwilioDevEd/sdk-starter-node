@@ -41,18 +41,30 @@ make sure to save this information in a secure location, or possibly your `~/.ba
 
 ### Configure product-specific settings
 
-Depending on which demos you'd like to run, you'll need to configure a few more values in your
-`.env` file.
+Depending on which demos you'd like to run, you may need to configure a few more values in your `.env` file.
 
-| Config Value  | Product Demo | Description |
-| :-------------  |:------------- |:------------- |
-`TWILIO_CHAT_SERVICE_SID` | Chat | Like a database for your Chat data - [generate one in the console here](https://www.twilio.com/console/chat/services)
-`TWILIO_SYNC_SERVICE_SID` | Sync (Preview) | Like a database for your Sync data - [generate one in the console here](https://www.twilio.com/console/sync/services)
-`TWILIO_NOTIFICATION_SERVICE_SID` | Notify (Preview) | You will need to create a Notify service - [generate one here](https://www.twilio.com/console/notify/services)
+### Configuring Twilio Sync
 
-### Configuring Notify
+Twilio Sync works out of the box, using default settings per account. Once you have your API keys configured, execute `npm install; npm run start` and [open a browser](http://localhost:3000/sync)!
 
-You will need to create a Notify Service through the [Twilio Console](https://www.twilio.com/console/notify/services), and add at least one credential on the [Mobile Push Credential screen](https://www.twilio.com/console/notify/credentials) (such as Apple Push Notification Service or Firebase Cloud Messaging for Android) to send notifications using Notify.
+### Configuring Twilio Chat
+
+In addition to the above, you'll need to [generate a Chat Service](https://www.twilio.com/console/chat/services) in the Twilio Console. Put the result in your `.env` file.
+
+| Config Value  | Where to get one. |
+| :------------- |:------------- |
+`TWILIO_CHAT_SERVICE_SID` | Chat | [Generate one in the Twilio Chat console](https://www.twilio.com/console/chat/services)
+
+### Configuring Twilio Notify
+
+You will need to create a Notify Service and add at least one credential on the [Mobile Push Credential screen](https://www.twilio.com/console/notify/credentials) (such as Apple Push Notification Service or Firebase Cloud Messaging for Android) to send notifications using Notify.
+
+| Config Value   | Where to get one. |
+| :------------- |:------------- |
+`TWILIO_NOTIFICATION_SERVICE_SID` | Generate one in the [Notify Console](https://www.twilio.com/console/notify/services) and put this in your `.env` file.
+A Push Credential | Generate one with Apple or Google and [configure it as a Notify credential](https://www.twilio.com/console/notify/credentials).
+
+Once you've done that, run the application and [open a browser](localhost:3000/notify)!
 
 ## Run the sample application
 
