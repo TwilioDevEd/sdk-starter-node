@@ -7,7 +7,7 @@ describe('#tokenGenerator', () => {
     const decoded = jwt.decode(token.token, {complete: true});
 
     expect(decoded).toHaveProperty('payload.grants.identity', token.identity);
-    expect(decoded).toHaveProperty('payload.grants.ip_messaging.service_sid');
+    expect(decoded).toHaveProperty('payload.grants.chat.service_sid');
     expect(decoded).toHaveProperty('payload.grants.data_sync.service_sid');
   });
 
