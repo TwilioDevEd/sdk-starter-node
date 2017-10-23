@@ -5,7 +5,7 @@ const nameGenerator = require('../name_generator');
 
 // Access Token used for Video, IP Messaging, and Sync
 const AccessToken = Twilio.jwt.AccessToken;
-const IpMessagingGrant = AccessToken.IpMessagingGrant;
+const ChatGrant = AccessToken.ChatGrant;
 const VideoGrant = AccessToken.VideoGrant;
 const SyncGrant = AccessToken.SyncGrant;
 
@@ -36,17 +36,17 @@ function tokenGenerator(identity = 0) {
   if (config.TWILIO_CHAT_SERVICE_SID) {
     // Create a "grant" which enables a client to use IPM as a given user,
     // on a given device
-    const ipmGrant = new IpMessagingGrant({
+    const chatGrant = new ChatGrant({
       serviceSid: config.TWILIO_CHAT_SERVICE_SID
     });
-    token.addGrant(ipmGrant);
+    token.addGrant(chatGrant);
   }
 
   if (config.TWILIO_SYNC_SERVICE_SID) {
-    // Create a "grant" which enables a client to use Sync as a given user,
-    // on a given device
+    // Point to a particular Sync service, or use the account default to
+    // interact directly with Functions.
     const syncGrant = new SyncGrant({
-      serviceSid: config.TWILIO_SYNC_SERVICE_SID
+      serviceSid: config.TWILIO_SYNC_SERVICE_SID || 'default'
     });
     token.addGrant(syncGrant);
   }
