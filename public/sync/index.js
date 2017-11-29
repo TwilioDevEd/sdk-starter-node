@@ -19,6 +19,13 @@ $(function () {
   $.getJSON('/token', function (tokenResponse) {
     //Initialize the Sync client
     syncClient = new Twilio.Sync.Client(tokenResponse.token, { logLevel: 'info' });
+    syncClient.on('connectionStateChanged', function(state) {
+      if (state != 'connected') {
+        $message.html('Sync is not live (websocket connection <span style="color: red">' + state + '</span>)…');
+      } else {
+        $message.html('Sync is live!');
+      }
+    });
 
     //Let's pop a message on the screen to show that Sync is ready
     $message.html('Sync initialized!');
