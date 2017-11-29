@@ -26,14 +26,17 @@ $(function () {
     //Note the use of promises
     syncClient.document('SyncGame').then(function(syncDoc) {
       //Initialize game board UI to current state (if it exists)
-      var data = syncDoc.get();
+      var data = syncDoc.value;
       if (data.board) {
         updateUserInterface(data);
       }
 
       //Let's subscribe to changes on this document, so when something
       //changes on this document, we can trigger our UI to update
-      syncDoc.on('updated', updateUserInterface);
+      syncDoc.on('updated', function(event) {
+        console.debug("Board was updated", event.isLocal? "locally." : "by the other guy.");
+        updateUserInterface(event.value);
+      });
 
       //Whenever a board button is clicked, update that document.
       $buttons.on('click', function (e) {
