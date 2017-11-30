@@ -4,7 +4,11 @@ node_js:
   - 'stable'
 
 before_script:
-    - cp .env.example .env
+    # For testing, we need to make sure configured values appear in tokens
+    - sed "s/^# \(TWILIO_CHAT_SERVICE_SID\)=.*$/\1=something123/; s/^# \(TWILIO_SYNC_SERVICE_SID\)=.*$/\1=something456/" < .env.example > .env
+
+after_script:
+    - rm .env
 
 cache:
   directories:

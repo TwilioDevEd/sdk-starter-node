@@ -8,7 +8,9 @@ describe('#tokenGenerator', () => {
 
     expect(decoded).toHaveProperty('payload.grants.identity', token.identity);
     expect(decoded).toHaveProperty('payload.grants.chat.service_sid');
+    expect(decoded.payload.grants.chat.service_sid).toEqual("something123")
     expect(decoded).toHaveProperty('payload.grants.data_sync.service_sid');
+    expect(decoded.payload.grants.data_sync.service_sid).toEqual("something456")
   });
 
   it('generates a new token using the specified identity', () => {
