@@ -8,10 +8,6 @@ $(function () {
   //Our interface to the Sync service
   var syncClient;
 
-  //Get an access token for the current user, passing a device ID
-  //In browser-based apps, every tab is like its own unique device
-  //synchronizing state -- so we'll use a random UUID to identify
-  //this tab.
   $.getJSON('/token', function (tokenResponse) {
     //Initialize the Sync client
     syncClient = new Twilio.Sync.Client(tokenResponse.token, { logLevel: 'info' });
