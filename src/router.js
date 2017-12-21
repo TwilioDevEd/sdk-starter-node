@@ -30,6 +30,7 @@ router.post('/token', (req, res) => {
 router.post('/register', (req, res) => {
   var content = camelCaseKeys(req.body);
   registerBind(content).then((data) => {
+    res.header('Access-Control-Allow-Origin', '*');
     res.status(data.status);
     res.send(data.data);
   });
