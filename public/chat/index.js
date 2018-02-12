@@ -52,16 +52,18 @@ $(function() {
     + '<span class="me">' + username + '</span>', true);
 
     // Initialize the Chat client
-    chatClient = new Twilio.Chat.Client(data.token);
-    chatClient.getSubscribedChannels().then(createOrJoinGeneralChannel);
+    Twilio.Chat.Client.create(data.token).then(client => {
+      chatClient = client;
+      chatClient.getSubscribedChannels().then(createOrJoinGeneralChannel);
+    });
   });
 
   function createOrJoinGeneralChannel() {
     // Get the general chat channel, which is where all the messages are
     // sent in this simple application
     print('Attempting to join "general" chat channel...');
-    var promise = chatClient.getChannelByUniqueName('general');
-    promise.then(function(channel) {
+    chatClient.getChannelByUniqueName('general')
+    .then(function(channel) {
       generalChannel = channel;
       console.log('Found general channel:');
       console.log(generalChannel);
@@ -77,6 +79,9 @@ $(function() {
         console.log(channel);
         generalChannel = channel;
         setupChannel();
+      }).catch(function(channel) {
+        console.log('Channel could not be created:');
+        console.log(channel);
       });
     });
   }
