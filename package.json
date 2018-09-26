@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "NODE_ENV=test && ./node_modules/.bin/jest"
+    "test": "NODE_ENV=test && jest"
   },
   "repository": {
     "type": "git",
