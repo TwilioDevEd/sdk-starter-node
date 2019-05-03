@@ -46,15 +46,23 @@ $(function() {
   $.getJSON('/token', {
     device: 'browser'
   }, function(data) {
+
+
+    // Initialize the Chat client
+    Twilio.Chat.Client.create(data.token).then(client => {
+      console.log('Created chat client');
+      chatClient = client;
+      chatClient.getSubscribedChannels().then(createOrJoinGeneralChannel);
+
     // Alert the user they have been assigned a random username
     username = data.identity;
     print('You have been assigned a random username of: '
     + '<span class="me">' + username + '</span>', true);
 
-    // Initialize the Chat client
-    Twilio.Chat.Client.create(data.token).then(client => {
-      chatClient = client;
-      chatClient.getSubscribedChannels().then(createOrJoinGeneralChannel);
+    }).catch(error => {
+      console.error(error);
+      print('There was an error creating the chat client:<br/>' + error, true);
+      print('Please check your .env file.', false);
     });
   });
 
@@ -103,7 +111,12 @@ $(function() {
   // Send a new message to the general channel
   var $input = $('#chat-input');
   $input.on('keydown', function(e) {
+
     if (e.keyCode == 13) {
+      if (generalChannel === undefined) {
+        print('The Chat Service is not configured. Please check your .env file.', false);
+        return;
+      }
       generalChannel.sendMessage($input.val())
       $input.val('');
     }
