@@ -19,7 +19,7 @@
   "homepage": "https://github.com/TwilioDevEd/sdk-starter-node#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "camelcase": "^5.0.0",
+    "camelcase": "^5.3.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "extend": "^3.0.2",
