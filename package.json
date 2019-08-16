@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "jest": "^23.6.0",
-    "jsonwebtoken": "^8.3.0"
+    "jsonwebtoken": "^8.5.1"
   }
 }
