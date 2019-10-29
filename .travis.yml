@@ -5,7 +5,7 @@ node_js:
 
 before_script:
     # For testing, we need to make sure configured values appear in tokens
-    - sed "s/^# \(TWILIO_CHAT_SERVICE_SID\)=.*$/\1=something123/; s/^# \(TWILIO_SYNC_SERVICE_SID\)=.*$/\1=something456/" < .env.example > .env
+    - sed "s/^# \(TWILIO_CHAT_SERVICE_SID\)=.*$/\1=ISsomething123/; s/^# \(TWILIO_SYNC_SERVICE_SID\)=.*$/\1=ISsomething456/" < .env.example > .env
 
 after_script:
     - rm .env

@@ -1,4 +1,4 @@
-require('dotenv').load();
+require('dotenv').config();
 
 module.exports = {
   TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
