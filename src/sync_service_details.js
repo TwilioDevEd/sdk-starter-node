@@ -1,5 +1,5 @@
 const Twilio = require('twilio');
-require('dotenv').load();
+require('dotenv').config();
 
 function syncServiceDetails() {
     const syncServiceSid = process.env.TWILIO_SYNC_SERVICE_SID || 'default';
