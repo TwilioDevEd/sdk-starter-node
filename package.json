@@ -19,19 +19,21 @@
   "homepage": "https://github.com/TwilioDevEd/sdk-starter-node#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "camelcase": "^5.3.1",
+    "camelcase": "^6.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "extend": "^3.0.2",
-    "pug": "^2.0.4",
-    "twilio": "^3.36.0"
+    "pug": "^3.0.0  ",
+    "twilio": "^3.44.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0",
-    "jest-extended": "^0.11.2",
+    "jest": "^26.0.1",
+    "jest-extended": "^0.11.5",
     "jsonwebtoken": "^8.5.1"
   },
   "jest": {
-    "setupFilesAfterEnv": ["jest-extended"]
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
   }
 }
