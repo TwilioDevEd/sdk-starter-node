@@ -41,11 +41,7 @@ $(function() {
   print('Logging in...');
 
   // Get an access token for the current user, passing a username (identity)
-  // and a device ID - for browser-based apps, we'll always just use the
-  // value "browser"
-  $.getJSON('/token', {
-    device: 'browser'
-  }, function(data) {
+  $.getJSON('/token', function(data) {
 
 
     // Initialize the Chat client
@@ -53,6 +49,16 @@ $(function() {
       console.log('Created chat client');
       chatClient = client;
       chatClient.getSubscribedChannels().then(createOrJoinGeneralChannel);
+
+      // when the access token is about to expire, refresh it
+      chatClient.on('tokenAboutToExpire', function() {
+        refreshToken(username);
+      });
+
+      // if the access token already expired, refresh it
+      chatClient.on('tokenExpired', function() {
+        refreshToken(username);
+      });
 
     // Alert the user they have been assigned a random username
     username = data.identity;
@@ -65,6 +71,16 @@ $(function() {
       print('Please check your .env file.', false);
     });
   });
+
+  function refreshToken(identity) {
+    console.log('Token about to expire');
+    // Make a secure request to your backend to retrieve a refreshed access token.
+    // Use an authentication mechanism to prevent token exposure to 3rd parties.
+    $.getJSON('/token/' + identity, function(data) {
+      console.log('updated token for chat client');          
+      chatClient.updateToken(data.token);
+    });
+  }
 
   function createOrJoinGeneralChannel() {
     // Get the general chat channel, which is where all the messages are
