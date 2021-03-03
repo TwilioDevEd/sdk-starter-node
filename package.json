@@ -23,7 +23,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "extend": "^3.0.2",
-    "pug": "^3.0.0  ",
+    "pug": "^3.0.1",
     "twilio": "^3.52.0"
   },
   "devDependencies": {
