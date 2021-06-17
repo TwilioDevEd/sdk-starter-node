@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "extend": "^3.0.2",
     "pug": "^3.0.0  ",
-    "twilio": "^3.52.0"
+    "twilio": "^3.64.0"
   },
   "devDependencies": {
     "jest": "^26.6.3",
