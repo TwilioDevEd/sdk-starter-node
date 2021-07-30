@@ -39,7 +39,7 @@ $(function () {
     // (or create it, if it doesn't exist) and connect the necessary event handlers.
     // 
     syncClient.document('SyncGame').then(function(syncDoc) {
-      var data = syncDoc.value;
+      var data = syncDoc.data;
       if (data.board) {
         updateUserInterface(data);
       }
@@ -48,7 +48,7 @@ $(function () {
       // event is for this.
       syncDoc.on('updated', function(event) {
         console.debug("Board was updated", event.isLocal? "locally." : "by the other guy.");
-        updateUserInterface(event.value);
+        updateUserInterface(event.data);
       });
 
       // Let's make our buttons control the game state in Sync…
