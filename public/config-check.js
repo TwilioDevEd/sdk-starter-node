@@ -6,7 +6,6 @@ $(function() {
 
   // Button Ids' and Config Keys
   var buttons = {
-    videoDemoButton: 'TwilioApiSecret',
     chatDemoButton: 'TwilioChatServiceSid',
     syncDemoButton: 'TwilioSyncServiceSid',
     notifyDemoButton: 'TwilioNotificationServiceSid'
