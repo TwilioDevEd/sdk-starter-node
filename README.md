@@ -8,7 +8,7 @@
 This sample project demonstrates how to use Twilio APIs in a Node.js web
 application. Once the app is up and running, check out [the home page](http://localhost:3000)
 to see which demos you can run. You'll find examples for [Chat](https://www.twilio.com/chat),
-[Video](https://www.twilio.com/video), [Sync](https://www.twilio.com/sync), and more.
+[Sync](https://www.twilio.com/sync), and [Notify](https://www.twilio.com/notify).
 
 Let's get started!
 

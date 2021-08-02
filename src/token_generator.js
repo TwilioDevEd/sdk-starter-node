@@ -3,10 +3,9 @@ const Twilio = require('twilio');
 const config = require('./config');
 const nameGenerator = require('../name_generator');
 
-// Access Token used for Video, IP Messaging, and Sync
+// Access Token used for Chat and Sync
 const AccessToken = Twilio.jwt.AccessToken;
 const ChatGrant = AccessToken.ChatGrant;
-const VideoGrant = AccessToken.VideoGrant;
 const SyncGrant = AccessToken.SyncGrant;
 
 /**
@@ -28,10 +27,6 @@ function tokenGenerator(identity = 0) {
 
   // Assign the provided identity or generate a new one
   token.identity = identity || nameGenerator();
-
-  // Grant the access token Twilio Video capabilities
-  const videoGrant = new VideoGrant();
-  token.addGrant(videoGrant);
 
   if (config.TWILIO_CHAT_SERVICE_SID) {
     // Create a "grant" which enables a client to use IPM as a given user,
