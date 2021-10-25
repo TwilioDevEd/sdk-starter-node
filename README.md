@@ -3,7 +3,7 @@
 </a>
 
 # Twilio SDK Starter Application for Node.js
-[![Build Status](https://travis-ci.org/TwilioDevEd/sdk-starter-node.svg)](https://travis-ci.org/TwilioDevEd/sdk-starter-node)
+[![Node.js CI](https://github.com/TwilioDevEd/sdk-starter-node/actions/workflows/node.js.yml/badge.svg)](https://github.com/TwilioDevEd/sdk-starter-node/actions/workflows/node.js.yml)
 
 This sample project demonstrates how to use Twilio APIs in a Node.js web
 application. Once the app is up and running, check out [the home page](http://localhost:3000)
