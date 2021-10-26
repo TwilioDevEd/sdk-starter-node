@@ -8,12 +8,10 @@ on:
     branches: [ master ]
     paths-ignore:
       - '**.md'
-      - '**.json'
   pull_request:
     branches: [ master ]
     paths-ignore:
       - '**.md'
-      - '**.json'
 
 jobs:
   build:
