@@ -19,6 +19,17 @@ app.use(bodyParser.json());
 
 app.use(router);
 
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  console.trace(err);
+  res.status(err.status || 500);
+  res.send({
+    message: err.message,
+    error: {},
+  });
+});
+
 // Get Sync Service Details for lazy creation of default service if needed
 syncServiceDetails();
 
